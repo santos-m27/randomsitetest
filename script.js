@@ -23,14 +23,26 @@ if (sessionStorage.getItem("visited")) {
 // Load current content from the server
 function loadCurrentContent() {
   fetch('/api/getContent')
-    .then(response => response.json())
-    .then(data => {
-      console.log('Fetched data:', data);  // Log the data to check it
-      document.getElementById('title').value = data.title;
-      document.getElementById('description').value = data.description;
-      document.getElementById('projects').value = data.projects.join(', ');
-    })
-    .catch(error => console.error('Error loading content:', error));
+  .then(response => response.json())
+  .then(data => {
+    console.log('Fetched data:', data);  // Log the data to check it
+    
+    // Check if elements exist before assigning values
+    const titleElement = document.getElementById('title');
+    const descriptionElement = document.getElementById('description');
+    const projectsElement = document.getElementById('projects');
+    
+    if (titleElement) {
+      titleElement.value = data.title || ''; // Default to an empty string if no title
+    }
+    if (descriptionElement) {
+      descriptionElement.value = data.description || ''; // Default to an empty string if no description
+    }
+    if (projectsElement) {
+      projectsElement.value = data.projects ? data.projects.join(', ') : ''; // Default to empty string if no projects
+    }
+  })
+  .catch(error => console.error('Error loading content:', error));
 }
 
 document.addEventListener('DOMContentLoaded', function() {
