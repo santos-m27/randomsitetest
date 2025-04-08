@@ -33,13 +33,13 @@ function loadCurrentContent() {
     const projectsElement = document.getElementById('projects');
     
     if (titleElement) {
-      titleElement.value = data.title || ''; // Default to an empty string if no title
+      titleElement.textContent = data.title || ''; // Default to an empty string if no title
     }
     if (descriptionElement) {
-      descriptionElement.value = data.description || ''; // Default to an empty string if no description
+      descriptionElement.textContent = data.description || ''; // Default to an empty string if no description
     }
     if (projectsElement) {
-      projectsElement.value = data.projects ? data.projects.join(', ') : ''; // Default to empty string if no projects
+      projectsElement.textContent = data.projects ? data.projects.join(', ') : ''; // Default to empty string if no projects
     }
   })
   .catch(error => console.error('Error loading content:', error));
