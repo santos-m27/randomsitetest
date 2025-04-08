@@ -6,17 +6,18 @@
 }
 
 body {
-  background: #121212;
-  color: #fff;
   font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Loader */
+/* Loader Styles */
 .loader-container {
   display: flex;
   justify-content: center;
@@ -48,7 +49,7 @@ body {
   100% { opacity: 0; }
 }
 
-/* Captcha */
+/* Captcha Styles */
 .captcha {
   margin-top: 1.5rem;
 }
@@ -67,11 +68,10 @@ body {
   width: 100%;
 }
 
-/* Main Content */
+/* Main Content (Home Page) */
 #main-content {
   text-align: center;
-  display: none; /* Hidden by default until loading is complete */
-  padding: 20px;
+  display: none;
 }
 
 .logo {
@@ -82,25 +82,24 @@ body {
 h1 {
   color: #a855f7;
   font-size: 3rem;
-  margin-bottom: 2rem; /* Adds space below the title */
 }
 
 .desc {
   color: #aaa;
-  margin-bottom: 2rem; /* Adds space below the description */
+  margin-bottom: 2rem;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 2rem; /* Adds space above the buttons */
 }
 
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
-  border-radius: 9999px;
+  border-radius: 30px;
   background: linear-gradient(90deg, #a855f7, #9ca3af);
   color: #fff;
   text-decoration: none;
@@ -114,30 +113,120 @@ h1 {
   box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .buttons {
-      flex-direction: column;
-  }
+/* Admin Page */
+.admin-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
-  .btn {
-      padding: 1rem;
-      width: 100%;
-  }
+.admin-container input {
+  width: 60%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
-  .loader-container {
-      flex-direction: column;
-  }
+.admin-container button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .logo {
-      width: 120px;
-  }
+.admin-container button:hover {
+  background-color: #45a049;
+}
 
-  h1 {
-      font-size: 2.5rem;
-  }
+#error-message {
+  color: red;
+}
 
-  .desc {
-      font-size: 1.1rem;
-  }
+/* Editor Page */
+.editor-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.editor-container input,
+.editor-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.editor-container button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editor-container button:hover {
+  background-color: #45a049;
+}
+
+.editor-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+textarea {
+  height: 150px;
+}
+
+/* Gradient Styling */
+h1 {
+  background: linear-gradient(90deg, #a855f7, #9ca3af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* About Section */
+.about-container, .projects-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-container h2, .projects-container h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.about-container p, .projects-container p {
+  color: #666;
+}
+
+.project-card {
+  margin-bottom: 1rem;
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  color: #4CAF50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
