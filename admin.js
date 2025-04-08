@@ -10,12 +10,25 @@ loginBtn.addEventListener('click', function() {
   if (password === '2025') {
     loginForm.style.display = 'none'; // Hide login form
     editSection.style.display = 'block'; // Show the edit section
+    loadCurrentContent(); // Load current content from API
   } else {
     alert('Incorrect password!');
   }
 });
 
-// Save the changes (This is just an example. You should implement actual saving functionality)
+// Load current content from the server
+function loadCurrentContent() {
+  fetch('/api/getContent')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('title').value = data.title;
+      document.getElementById('description').value = data.description;
+      document.getElementById('projects').value = data.projects.join(', ');
+    })
+    .catch(error => console.error('Error loading content:', error));
+}
+
+// Save the changes to the server
 editForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -23,15 +36,22 @@ editForm.addEventListener('submit', function(e) {
   const description = document.getElementById('description').value;
   const projects = document.getElementById('projects').value.split(',');
 
-  // Save the changes (you can implement saving to a database or localStorage)
-  console.log('New Title:', title);
-  console.log('New Description:', description);
-  console.log('New Projects:', projects);
+  const updatedContent = {
+    title: title,
+    description: description,
+    projects: projects
+  };
 
-  // Here, you can save the data to localStorage or a backend.
-  localStorage.setItem('title', title);
-  localStorage.setItem('description', description);
-  localStorage.setItem('projects', JSON.stringify(projects));
-
-  alert('Changes saved!');
+  fetch('/api/updateContent', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedContent)
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);
+  })
+  .catch(error => console.error('Error updating content:', error));
 });
