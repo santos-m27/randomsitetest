@@ -3,17 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin - Your Name</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Admin Page - Edit Portfolio</title>
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
   <div class="admin-container">
-    <h1>Admin Login</h1>
-    <input type="password" id="admin-password" placeholder="Enter Password">
-    <button onclick="authenticate()">Login</button>
-    <p id="error-message" style="color:red;"></p>
-  </div>
+    <h1>Admin Page - Edit Portfolio</h1>
+    <div class="login-form">
+      <label for="password">Enter Admin Password:</label>
+      <input type="password" id="password" placeholder="Enter password">
+      <button id="loginBtn">Login</button>
+    </div>
+    
+    <div class="edit-section" style="display: none;">
+      <h2>Edit Content</h2>
+      <form id="editForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" placeholder="Enter new title">
 
-  <script src="script.js"></script>
+        <label for="description">Description:</label>
+        <input type="text" id="description" placeholder="Enter new description">
+
+        <label for="projects">Projects:</label>
+        <textarea id="projects" placeholder="Enter new projects (comma separated)"></textarea>
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  <script src="admin.js"></script>
 </body>
 </html>
