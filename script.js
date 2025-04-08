@@ -1,51 +1,57 @@
-// Typing dots animation
-const dots = document.querySelectorAll(".dot");
-const loader = document.querySelector(".loader-container");
-const mainContent = document.getElementById("main-content");
-const captcha = document.getElementById("captcha");
+// Store the password in the JS (in a real-world application, this should be done server-side)
+const correctPassword = '2025';
 
-// Sound Effects
-const clickSound = new Audio("assets/sound1.mp3");
-const typingSound = new Audio("assets/sound2.mp3");
+// When you visit the admin page and enter the password
+function authenticate() {
+  const enteredPassword = document.getElementById('admin-password').value;
+  const errorMessage = document.getElementById('error-message');
 
-// Animate page transition on captcha completion
-captcha.addEventListener("input", () => {
-  if (captcha.value >= 100) {
-    mainContent.style.display = "block";
-    loader.style.display = "none";
-    clickSound.play();
-    setTimeout(() => {
-      mainContent.style.opacity = 1;
-    }, 500);
+  if (enteredPassword === correctPassword) {
+    // If the password is correct, redirect to the admin dashboard (the content editor page)
+    localStorage.setItem('isAuthenticated', true);  // Store the authentication state
+    window.location.href = 'editor.html';  // Redirect to editor page
+  } else {
+    // If the password is incorrect
+    errorMessage.textContent = 'Incorrect password. Please try again.';
+  }
+}
+
+// Handle displaying content after authentication
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('isAuthenticated') === 'true') {
+    // If authenticated, you can show an editor or any additional features
+    window.location.href = 'editor.html';  // Go to the content editor
   }
 });
 
-// Fade-in transition
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.body.style.transition = "opacity 1s ease-in";
-    document.body.style.opacity = 1;
-  }, 500);
-});
+// Editor Logic (on the editor page)
+function updateContent() {
+  const title = document.getElementById('editor-title').value;
+  const description = document.getElementById('editor-description').value;
+  const project = document.getElementById('editor-project').value;
+  const about = document.getElementById('editor-about').value;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const loaderContainer = document.querySelector(".loader-container");
-    const mainContent = document.getElementById("main-content");
-  
-    // Check if the user has already visited
-    if (localStorage.getItem("visited")) {
-      // User has already visited, skip the loader
-      loaderContainer.style.display = "none";
-      mainContent.style.display = "block";
-    } else {
-      // User is visiting for the first time
-      localStorage.setItem("visited", "true");
-  
-      // Wait for the loader to finish, then show main content
-      setTimeout(function () {
-        loaderContainer.style.display = "none";
-        mainContent.style.display = "block";
-      }, 3000); // Adjust this timeout value to match the duration of the loading animation
-    }
-  });
-  
+  localStorage.setItem('title', title);
+  localStorage.setItem('description', description);
+  localStorage.setItem('project', project);
+  localStorage.setItem('about', about);
+
+  alert('Content updated successfully!');
+}
+
+function loadEditorContent() {
+  const title = localStorage.getItem('title') || 'Your Name';
+  const description = localStorage.getItem('description') || 'Developer • Creator • Innovator';
+  const project = localStorage.getItem('project') || 'Project 1';
+  const about = localStorage.getItem('about') || 'Your bio goes here...';
+
+  document.getElementById('editor-title').value = title;
+  document.getElementById('editor-description').value = description;
+  document.getElementById('editor-project').value = project;
+  document.getElementById('editor-about').value = about;
+}
+
+// Automatically load editor content if authenticated
+if (window.location.pathname === '/editor.html') {
+  loadEditorContent();
+}
