@@ -71,6 +71,7 @@ body {
 #main-content {
   text-align: center;
   display: none; /* Hidden by default until loading is complete */
+  padding: 20px;
 }
 
 .logo {
@@ -81,17 +82,19 @@ body {
 h1 {
   color: #a855f7;
   font-size: 3rem;
+  margin-bottom: 2rem; /* Adds space below the title */
 }
 
 .desc {
   color: #aaa;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* Adds space below the description */
 }
 
 .buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  margin-top: 2rem; /* Adds space above the buttons */
 }
 
 .btn {
