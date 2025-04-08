@@ -7,6 +7,13 @@ const editForm = document.getElementById('editForm');
 // Login handler
 loginBtn.addEventListener('click', function() {
   const password = passwordInput.value;
+  
+  // Validate password input
+  if (!password) {
+    alert('Please enter a password!');
+    return;
+  }
+
   if (password === '2025') {
     loginForm.style.display = 'none'; // Hide login form
     editSection.style.display = 'block'; // Show the edit section
@@ -18,7 +25,7 @@ loginBtn.addEventListener('click', function() {
 
 // Load current content from the server
 function loadCurrentContent() {
-    fetch('/api/getContent')
+  fetch('/api/getContent')
     .then(response => response.json())
     .then(data => {
       console.log('Fetched data:', data);  // Log the data to check it
@@ -39,7 +46,7 @@ function loadCurrentContent() {
       }
     })
     .catch(error => console.error('Error loading content:', error));
-  }
+}
 
 // Save the changes to the server
 editForm.addEventListener('submit', function(e) {
@@ -47,7 +54,9 @@ editForm.addEventListener('submit', function(e) {
 
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
-  const projects = document.getElementById('projects').value.split(',');
+  const projects = document.getElementById('projects').value
+    .split(',')
+    .map(project => project.trim()); // Remove leading/trailing spaces from each project name
 
   const updatedContent = {
     title: title,
