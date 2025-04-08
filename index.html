@@ -3,22 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio - Your Name</title>
+  <title>Your Name - Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="main-content">
-    <header>
+  <!-- Loader Container -->
+  <div class="loader-container" id="loader-container">
+    <div class="loader">
+      <p class="typing-dots">Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
+      <div class="captcha">
+        <label for="captcha">Slide to verify</label>
+        <input type="range" id="captcha" min="0" max="100" value="0">
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content" style="display: none;">
       <img src="logo.png" alt="Logo" class="logo">
-      <h1 id="title">Your Name</h1>
-      <p id="description">Developer • Creator • Innovator</p>
+      <h1>Your Name</h1>
+      <p>Developer • Creator • Innovator</p>
       <div class="buttons">
         <a href="about.html" class="btn">About Me</a>
         <a href="projects.html" class="btn">Projects</a>
         <a href="mailto:your@email.com" class="btn">Contact</a>
-        <a href="admin.html" class="btn">Admin</a> <!-- Link to the Admin Page -->
       </div>
-    </header>
   </div>
 
   <script src="script.js"></script>
