@@ -27,3 +27,25 @@ window.addEventListener("load", () => {
     document.body.style.opacity = 1;
   }, 500);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const loaderContainer = document.querySelector(".loader-container");
+    const mainContent = document.getElementById("main-content");
+  
+    // Check if the user has already visited
+    if (localStorage.getItem("visited")) {
+      // User has already visited, skip the loader
+      loaderContainer.style.display = "none";
+      mainContent.style.display = "block";
+    } else {
+      // User is visiting for the first time
+      localStorage.setItem("visited", "true");
+  
+      // Wait for the loader to finish, then show main content
+      setTimeout(function () {
+        loaderContainer.style.display = "none";
+        mainContent.style.display = "block";
+      }, 3000); // Adjust this timeout value to match the duration of the loading animation
+    }
+  });
+  

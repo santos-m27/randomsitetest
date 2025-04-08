@@ -6,56 +6,14 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #121212; /* Keep dark background */
+  background: #121212;
   color: #fff;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
-}
-
-.container {
-  text-align: center;
-}
-
-h1 {
-  font-size: 3rem;
-  background: linear-gradient(90deg, #a855f7, #9ca3af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
-}
-
-.desc {
-  color: #aaa;
-  margin-bottom: 2rem;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, #a855f7, #9ca3af);
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-}
-
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
 }
 
 /* Loader */
@@ -112,7 +70,7 @@ h1 {
 /* Main Content */
 #main-content {
   text-align: center;
-  display: none;
+  display: none; /* Hidden by default until loading is complete */
 }
 
 .logo {
@@ -125,8 +83,58 @@ h1 {
   font-size: 3rem;
 }
 
+.desc {
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
 .buttons {
-  margin-top: 2rem;
   display: flex;
   justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #a855f7, #9ca3af);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .buttons {
+      flex-direction: column;
+  }
+
+  .btn {
+      padding: 1rem;
+      width: 100%;
+  }
+
+  .loader-container {
+      flex-direction: column;
+  }
+
+  .logo {
+      width: 120px;
+  }
+
+  h1 {
+      font-size: 2.5rem;
+  }
+
+  .desc {
+      font-size: 1.1rem;
+  }
 }
