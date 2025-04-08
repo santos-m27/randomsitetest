@@ -21,12 +21,17 @@ function loadCurrentContent() {
   fetch('/api/getContent')
     .then(response => response.json())
     .then(data => {
+      console.log('Fetched data:', data);  // Log the data to check it
       document.getElementById('title').value = data.title;
       document.getElementById('description').value = data.description;
       document.getElementById('projects').value = data.projects.join(', ');
     })
     .catch(error => console.error('Error loading content:', error));
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadCurrentContent();
+  });  
 
 // Save the changes to the server
 editForm.addEventListener('submit', function(e) {

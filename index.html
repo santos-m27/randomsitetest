@@ -13,7 +13,7 @@
       <p class="typing-dots">Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
       <div class="captcha">
         <label for="captcha">Slide to verify</label>
-        <input type="range" id="captcha" min="0" max="100" value="0">
+        <input type="range" id="captcha" min="0" max="100" value="0" />
       </div>
     </div>
   </div>
@@ -22,8 +22,10 @@
   <div id="main-content" style="display: none;">
     <header>
       <img src="logo.png" alt="Logo" class="logo">
-      <h1>Your Name</h1>
-      <p>Developer • Creator • Innovator</p>
+      <!-- Title with ID for dynamic changes -->
+      <h1 id="title">Your Name</h1>
+      <!-- Description with ID for dynamic changes -->
+      <p id="description">Developer • Creator • Innovator</p>
       <div class="buttons">
         <a href="about.html" class="btn">About Me</a>
         <a href="projects.html" class="btn">Projects</a>
